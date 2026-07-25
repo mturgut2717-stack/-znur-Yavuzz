@@ -7,9 +7,9 @@
     <style>
         body {
             margin: 0;
-            padding: 15px;
+            padding: 20px 15px;
             font-family: system-ui, sans-serif;
-            background: linear-gradient(135deg, #ff6b6b, #ff9a9e, #fad0c4);
+            background: #000000;
             color: white;
             text-align: center;
             min-height: 100vh;
@@ -18,56 +18,61 @@
         h1 {
             font-size: 3rem;
             margin: 15px 0 8px;
-            text-shadow: 0 0 30px white, 0 0 70px #ff4757;
+            text-shadow: 0 0 30px #ff4757, 0 0 60px #ff4757;
             animation: glow 2s infinite alternate;
         }
         .photo {
-            width: 100%;
-            max-width: 320px;
-            height: 340px;
+            width: 280px;
+            height: 280px;
             object-fit: cover;
-            border-radius: 25px;
-            border: 8px solid white;
-            margin: 15px auto;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+            border-radius: 50%;
+            border: 6px solid #ff4757;
+            margin: 20px auto;
+            box-shadow: 0 0 40px rgba(255, 71, 87, 0.6);
+            display: block;
         }
         button {
-            margin: 20px 8px;
-            padding: 17px 50px;
-            font-size: 1.4rem;
+            margin: 18px 8px;
+            padding: 16px 45px;
+            font-size: 1.35rem;
             background: #ff4757;
             color: white;
             border: none;
             border-radius: 50px;
+            box-shadow: 0 10px 30px rgba(255,71,87,0.5);
+        }
+        .message {
+            margin: 20px auto;
+            padding: 22px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            max-width: 90%;
+            line-height: 1.7;
+            font-size: 1.15rem;
         }
         .balloon, .heart {
             position: fixed;
             z-index: 100;
-            font-size: 50px;
+            font-size: 48px;
             animation: floatUp linear forwards;
         }
-        .confetti {
-            position: fixed;
-            width: 12px;
-            height: 12px;
-            z-index: 90;
-            animation: confettiFall linear forwards;
-        }
-        @keyframes glow { from {text-shadow:0 0 20px #fff;} to {text-shadow:0 0 60px #fff, 0 0 90px #ff4757;} }
-        @keyframes floatUp { to { transform: translateY(-150vh) rotate(35deg); opacity: 0; } }
-        @keyframes confettiFall { to { transform: translateY(150vh) rotate(900deg); opacity: 0; } }
+        @keyframes glow { from {text-shadow:0 0 20px #ff4757;} to {text-shadow:0 0 50px #ff4757, 0 0 80px #ff9a9e;} }
+        @keyframes floatUp { to { transform: translateY(-160vh) rotate(40deg); opacity: 0; } }
     </style>
 </head>
 <body>
     <h1>Öznur Yavuz</h1>
-    <p style="font-size:1.85rem;">🎂 Mutlu Yıllar! 💖</p>
+    <p style="font-size:1.8rem;">🎂 Mutlu Yıllar! 💖</p>
     
-    <img src="https://i.postimg.cc/WNZdwfB9/1000119399.jpg" class="photo" alt="Öznur Yavuz">
+    <img src="https://i.imgur.com/RiQhY6Q.jpg" class="photo" alt="Öznur Yavuz">
 
-    <div style="margin:20px auto;padding:22px;background:rgba(255,255,255,0.25);border-radius:25px;max-width:90%;">
-        Sevgili Öznur,<br><br>
-        Bu özel günde sana en içten dileklerimi gönderiyorum.<br><br>
-        Sağlık, mutluluk ve en güzel anlarla dolu bir yıl olsun ✨
+    <div class="message">
+        Bazen insanlar güzeldir.<br>
+        Sadece görünüşleriyle değil.<br>
+        Sadece söyledikleriyle değil.<br>
+        Olduklarıyla.<br><br>
+        Varlığın hayatıma anlam katıyor.<br>
+        İyi ki doğdun, iyi ki varsın..
     </div>
 
     <button onclick="playMusic()">Müzik Aç 🎵</button>
@@ -82,50 +87,32 @@
 
         function startParty() {
             playMusic();
+            alert("🎉 Parti başladı!");
 
-            alert("🎉 Parti başladı! Müzik açılıyor...");
-
-            // Daha az ama kaliteli ve uzun süren animasyonlar
-            let count = 0;
-            const interval = setInterval(() => {
-                // Balonlar
-                for (let i = 0; i < 4; i++) {
+            for(let i=0; i<40; i++) {
+                setTimeout(() => {
                     const b = document.createElement('div');
                     b.className = 'balloon';
                     b.textContent = '🎈';
-                    b.style.left = Math.random() * 100 + 'vw';
+                    b.style.left = Math.random()*100 + 'vw';
                     b.style.bottom = '-80px';
-                    b.style.animationDuration = (Math.random() * 10 + 12) + 's';
+                    b.style.animationDuration = (Math.random()*9 + 11) + 's';
                     document.body.appendChild(b);
-                    setTimeout(() => b.remove(), 32000);
-                }
+                    setTimeout(() => b.remove(), 28000);
+                }, i*80);
+            }
 
-                // Kalpler
-                for (let i = 0; i < 5; i++) {
+            for(let i=0; i<50; i++) {
+                setTimeout(() => {
                     const h = document.createElement('div');
                     h.className = 'heart';
                     h.textContent = '💖';
-                    h.style.left = Math.random() * 100 + 'vw';
+                    h.style.left = Math.random()*100 + 'vw';
                     h.style.bottom = '-70px';
-                    h.style.animationDuration = (Math.random() * 9 + 11) + 's';
+                    h.style.animationDuration = (Math.random()*8 + 10) + 's';
                     document.body.appendChild(h);
-                    setTimeout(() => h.remove(), 30000);
-                }
-
-                count++;
-                if (count > 30) clearInterval(interval);
-            }, 350);
-
-            // İlk konfeti
-            for (let i = 0; i < 180; i++) {
-                const c = document.createElement('div');
-                c.className = 'confetti';
-                c.style.left = Math.random() * 100 + 'vw';
-                c.style.top = '-10px';
-                c.style.backgroundColor = `hsl(${Math.random()*360}, 100%, 65%)`;
-                c.style.animationDuration = (Math.random() * 5 + 4) + 's';
-                document.body.appendChild(c);
-                setTimeout(() => c.remove(), 14000);
+                    setTimeout(() => h.remove(), 26000);
+                }, i*70);
             }
         }
     </script>
