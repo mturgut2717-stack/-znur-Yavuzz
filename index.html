@@ -11,7 +11,7 @@ h1{font-size:2.8rem;margin:10px 0;text-shadow:0 0 25px #ff4757}
 button{margin:25px 0;padding:16px 50px;font-size:1.4rem;background:#ff4757;color:white;border:none;border-radius:50px}
 .message{margin:15px auto;padding:18px;background:rgba(255,255,255,0.12);border-radius:18px;max-width:90%;line-height:1.6;font-size:1.1rem}
 .balloon,.heart{position:fixed;z-index:99;font-size:45px;animation:float linear forwards}
-@keyframes float{to{transform:translateY(-150vh) rotate(30deg);opacity:0}}
+@keyframes float{to{transform:translateY(-160vh) rotate(35deg);opacity:0}}
 </style>
 </head>
 <body>
@@ -35,31 +35,34 @@ Varlığın hayatıma anlam katıyor.<br>
 
 <script>
 function start(){
-document.getElementById('m').src="https://www.youtube.com/embed/rHbNUn2D3jc?start=38&autoplay=1";
-for(let i=0;i<40;i++){
-setTimeout(()=>{
-let b=document.createElement('div');
-b.className='balloon';
-b.textContent='🎈';
-b.style.left=Math.random()*100+'vw';
-b.style.bottom='-60px';
-b.style.animationDuration=(8+Math.random()*6)+'s';
-document.body.appendChild(b);
-setTimeout(()=>b.remove(),20000);
-},i*90);
-}
-for(let i=0;i<50;i++){
-setTimeout(()=>{
-let h=document.createElement('div');
-h.className='heart';
-h.textContent='💖';
-h.style.left=Math.random()*100+'vw';
-h.style.bottom='-60px';
-h.style.animationDuration=(7+Math.random()*5)+'s';
-document.body.appendChild(h);
-setTimeout(()=>h.remove(),18000);
-},i*70);
-}
+document.getElementById('m').src="https://www.youtube.com/embed/dvql2LmOpZY?autoplay=1";
+
+// Balon ve kalpler uzun süre devam etsin
+let count = 0;
+const interval = setInterval(() => {
+  for(let i=0; i<3; i++){
+    let b=document.createElement('div');
+    b.className='balloon';
+    b.textContent='🎈';
+    b.style.left=Math.random()*100+'vw';
+    b.style.bottom='-60px';
+    b.style.animationDuration=(10+Math.random()*8)+'s';
+    document.body.appendChild(b);
+    setTimeout(()=>b.remove(),25000);
+  }
+  for(let i=0; i<4; i++){
+    let h=document.createElement('div');
+    h.className='heart';
+    h.textContent='💖';
+    h.style.left=Math.random()*100+'vw';
+    h.style.bottom='-60px';
+    h.style.animationDuration=(9+Math.random()*7)+'s';
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),23000);
+  }
+  count++;
+  if(count > 40) clearInterval(interval);
+}, 400);
 }
 </script>
 </body>
