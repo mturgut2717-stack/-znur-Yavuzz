@@ -32,10 +32,12 @@ Varlığın hayatıma anlam katıyor.<br>
 
 <button onclick="startParty()">Parti Başlasın 💖</button>
 
+<iframe id="player" width="0" height="0" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
 <script>
 function startParty() {
-  // Yeni sekmede şarkıyı aç (iPhone'da kesin çalışır)
-  window.open("https://youtube.com/shorts/LuJvZv2DqF8", "_blank");
+  const player = document.getElementById('player');
+  player.src = "https://www.youtube.com/embed/LuJvZv2DqF8?autoplay=1&playsinline=1&mute=0";
 
   // Balon ve kalpler
   let count = 0;
