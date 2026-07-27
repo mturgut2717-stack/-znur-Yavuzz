@@ -2,21 +2,68 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>Öznur Yavuz</title>
 <style>
-body{margin:0;padding:20px 15px;font-family:system-ui;background:#000;color:white;text-align:center;min-height:100vh;overflow:hidden}
-h1{font-size:2.8rem;margin:10px 0;text-shadow:0 0 25px #ff4757}
-.photo{width:260px;height:260px;object-fit:cover;border-radius:50%;border:5px solid #ff4757;margin:15px auto;display:block}
-button{margin:25px 0;padding:16px 50px;font-size:1.4rem;background:#ff4757;color:white;border:none;border-radius:50px}
-.message{margin:15px auto;padding:18px;background:rgba(255,255,255,0.12);border-radius:18px;max-width:90%;line-height:1.6;font-size:1.1rem}
-.balloon,.heart{position:fixed;z-index:99;font-size:45px;animation:float linear forwards}
-@keyframes float{to{transform:translateY(-160vh) rotate(35deg);opacity:0}}
+body {
+margin: 0;
+padding: 15px;
+font-family: system-ui;
+background: #000;
+color: white;
+text-align: center;
+min-height: 100vh;
+}
+h1 {
+font-size: 2.6rem;
+margin: 10px 0 5px;
+text-shadow: 0 0 20px #ff4757;
+}
+.photo {
+width: 240px;
+height: 240px;
+object-fit: cover;
+border-radius: 50%;
+border: 5px solid #ff4757;
+margin: 12px auto;
+display: block;
+}
+.message {
+margin: 15px auto;
+padding: 15px;
+background: rgba(255,255,255,0.12);
+border-radius: 16px;
+max-width: 95%;
+line-height: 1.5;
+font-size: 1.05rem;
+}
+button {
+display: block;
+width: 85%;
+max-width: 280px;
+margin: 15px auto;
+padding: 16px;
+font-size: 1.3rem;
+background: #ff4757;
+color: white;
+border: none;
+border-radius: 50px;
+}
+.balloon, .heart {
+position: fixed;
+z-index: 99;
+font-size: 42px;
+animation: float linear forwards;
+}
+@keyframes float {
+to { transform: translateY(-150vh) rotate(30deg); opacity: 0; }
+}
 </style>
 </head>
 <body>
+
 <h1>Öznur Yavuz</h1>
-<p style="font-size:1.6rem">🎂 Mutlu Yıllar! 💖</p>
+<p style="font-size:1.5rem; margin:0 0 10px;">🎂 Mutlu Yıllar! 💖</p>
 
 <img src="https://i.ibb.co/hJqpFwDs/IMG-20260726-001544.jpg" class="photo" alt="Öznur">
 
@@ -29,39 +76,44 @@ Varlığın hayatıma anlam katıyor.<br>
 İyi ki doğdun, iyi ki varsın..
 </div>
 
-<button onclick="start()">Parti Başlasın 💖</button>
+<button onclick="playMusic()">Müzik Aç 🎵</button>
+<button onclick="startParty()">Parti Başlasın 💖</button>
 
 <iframe id="m" width="0" height="0" src="" allow="autoplay"></iframe>
 
 <script>
-function start(){
-document.getElementById('m').src="https://www.youtube.com/embed/LuJvZv2DqF8?autoplay=1";
+function playMusic() {
+  document.getElementById('m').src = "https://www.youtube.com/embed/LuJvZv2DqF8?autoplay=1";
+}
 
-let count = 0;
-const interval = setInterval(() => {
-  for(let i=0; i<3; i++){
-    let b=document.createElement('div');
-    b.className='balloon';
-    b.textContent='🎈';
-    b.style.left=Math.random()*100+'vw';
-    b.style.bottom='-60px';
-    b.style.animationDuration=(10+Math.random()*8)+'s';
-    document.body.appendChild(b);
-    setTimeout(()=>b.remove(),25000);
-  }
-  for(let i=0; i<4; i++){
-    let h=document.createElement('div');
-    h.className='heart';
-    h.textContent='💖';
-    h.style.left=Math.random()*100+'vw';
-    h.style.bottom='-60px';
-    h.style.animationDuration=(9+Math.random()*7)+'s';
-    document.body.appendChild(h);
-    setTimeout(()=>h.remove(),23000);
-  }
-  count++;
-  if(count > 45) clearInterval(interval);
-}, 400);
+function startParty() {
+  playMusic();
+
+  let count = 0;
+  const interval = setInterval(() => {
+    for(let i=0; i<3; i++){
+      let b = document.createElement('div');
+      b.className = 'balloon';
+      b.textContent = '🎈';
+      b.style.left = Math.random()*100 + 'vw';
+      b.style.bottom = '-50px';
+      b.style.animationDuration = (9 + Math.random()*7) + 's';
+      document.body.appendChild(b);
+      setTimeout(() => b.remove(), 22000);
+    }
+    for(let i=0; i<4; i++){
+      let h = document.createElement('div');
+      h.className = 'heart';
+      h.textContent = '💖';
+      h.style.left = Math.random()*100 + 'vw';
+      h.style.bottom = '-50px';
+      h.style.animationDuration = (8 + Math.random()*6) + 's';
+      document.body.appendChild(h);
+      setTimeout(() => h.remove(), 20000);
+    }
+    count++;
+    if(count > 40) clearInterval(interval);
+  }, 450);
 }
 </script>
 </body>
